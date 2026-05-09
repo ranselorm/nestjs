@@ -24,9 +24,16 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
+  // create user
   @Post('/signup')
   createUser(@Body() body: CreateUserDto) {
     return this.authService.signup(body.email, body.password);
+  }
+
+  // signin user
+  @Post('/signin')
+  signinUser(@Body() body: CreateUserDto) {
+    return this.authService.signin(body.email, body.password);
   }
 
   // get user by id
