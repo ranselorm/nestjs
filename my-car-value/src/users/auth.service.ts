@@ -24,5 +24,9 @@ export class AuthService {
 
     // join salt and hashed result
     const result = salt + '.' + hash;
+
+    //create the user in the db
+    const user = await this.userService.create(email, result);
+    return user;
   }
 }
