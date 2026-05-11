@@ -49,6 +49,7 @@ export class AuthService {
     // hash password with destructred salt from db
     const hash = (await scrypt(password, salt, 32)) as Buffer;
 
+    // compare hash and stored hash
     if (storedHash !== hash.toString('hex')) {
       throw new BadRequestException('wrong email or password');
     }
