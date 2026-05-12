@@ -17,6 +17,7 @@ import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
+import { User } from './user.entity';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -28,7 +29,7 @@ export class UsersController {
 
   //get logged in user
   @Get('/me')
-  whoAmI(@CurrentUser() user: any) {
+  whoAmI(@CurrentUser() user: User) {
     return user;
   }
 
